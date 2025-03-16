@@ -34,6 +34,7 @@ function Joinsign() {
     
           } catch (error) {
               console.error("로그인 실패", error.response?.data || error.message);
+              window.alert('Id, Password를 정확히 입력해주세요.');
           }
     };
   
@@ -41,6 +42,13 @@ function Joinsign() {
     // JWT 회원가입 함수
     const signup = async () => {
           console.log("학인sign",signUserNameRef.current.value, signUserPassRef.current.value,signUserEmailRef.current.value);
+           if (signUserPassRef.current.value === '') {
+              window.alert('비밀번호를 입력하세요.');
+              return;
+            } else if ( signUserPassRef.current.value.length <= 6) {
+                window.alert('비밀번호가 너무 짧습니다. 영문 포함하여 8자이상 입력하세요.');
+                return;
+            }
   
           try {
               const {data} = await axios.post('http://127.0.0.1:8000/api/register/', {
