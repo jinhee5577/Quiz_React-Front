@@ -1,0 +1,170 @@
+.App {
+  text-align: center;
+  width: 100%;
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 30vh;
+  --card-width: calc(var(--card-height) / 1.2);
+}
+
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: #212534 !important;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+#Navbar{ 
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 20px;
+  color: aliceblue;
+  font-weight: 700;
+  
+}
+.menuItem{
+  position:relative;
+  width:150px;
+  height:30px;
+  text-transform:uppercase;
+  font-size:16px;
+  padding-top:12px;
+  padding-bottom:2px;
+  background: #212534; 
+  float:left;
+  text-align:center;
+  font-family: 'Raleway', sans-serif;
+  cursor:pointer;
+  font-size: 18px;
+}
+
+.menuItem a{
+  color: aliceblue;
+  font-weight: 700;
+  text-decoration: none;
+}
+#slider{
+  background-color:red;
+  height:5px;
+  width:150px;
+  opacity:.8;
+  margin-left:0px;
+  border-radius:1px;
+}
+
+
+
+#quiz_main {
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+}
+
+#quizBox{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#quizBox li{
+  width: 31%;
+}
+
+#quizBox li .card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
+  font-family: cursive;
+}
+
+#quizBox li .card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+}
+#quizBox li .card:hover:before, .card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+
+#quizBox li .card::before {
+  content: "뒤집어주세요.";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+}
+
+#quizBox li .card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+.choice{
+  position: relative;
+}
+
+.chkAns{
+  width: 17px;
+  height: 17px;
+  position: absolute;
+  left: -28px !important;
+  top: 2px;
+}
