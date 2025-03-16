@@ -21,7 +21,7 @@ function QuestionList() {
       try {
           // 현재 로그인된 사용자 정보 조회함.
           const {data} = await axios.get('http://127.0.0.1:8000/api/user/');
-          console.log(data);
+        //  console.log(data);
           setLoginUser(data);
 
       } catch (e) {
@@ -33,7 +33,7 @@ function QuestionList() {
   // 대분류 퀴즈목록에서 선태한 질문 목록 가져 오는 비동기 함수 호출
   const getQuestionList = async () => {
       const {data} = await axios.get(`http://127.0.0.1:8000/quiz/questions/${quiz_id}/`);
-      console.log(data);
+     // console.log(data);
       setQuestionList(data);
 
   };
@@ -77,12 +77,17 @@ function QuestionList() {
                    'Content-Type': 'application/json'
                 }
             });
-            console.log("답안 제출 확인", data);
+          //  console.log("답안 제출 확인", data);
+            localStorage.setItem('score', data.score);
             window.alert(`응시한 답안이 정상 저장되었습니다. 현재 점수: ${data.score}점 입니다. 다른 퀴즈도 풀어주세요.`);
             navigate('/home');
 
           } catch (e) {
-              console.log(e.response.data);
+              if (e.response) {
+                 console.log("에러 응답:", e.response.data);  // 에러 상세
+              } else {
+                 console.log("요청 실패:", e.message);  // 네트워크 등 기타 문제
+              }
           } 
   };
 

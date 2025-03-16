@@ -20,7 +20,7 @@ function App() {
         try {
             // 현재 로그인된 사용자 정보 조회함.
             const {data} = await axios.get('http://127.0.0.1:8000/api/user/');
-            console.log(data);
+          //  console.log(data);
             setLoginUser(data);
 
         } catch (e) {
@@ -77,7 +77,12 @@ function App() {
           <div alt="1" className="menuItem"><Link to={`/home`}>HOME</Link></div>
           <div alt="2" className="menuItem"><Link to={`/joinSign`}>Login/Sign up</Link></div>
           <div alt="3" className="menuItem" onClick={logout}>Logout</div>
-          <div alt="4" className="menuItem">{loginUser.username ? `${loginUser.username} 님` : '고객 전용'}</div>
+          <div alt="4" className="menuItem">
+              { loginUser.username 
+                ? `${loginUser.username} 님 ${localStorage.getItem('score') ? localStorage.getItem('score') : 0}점` 
+                : '고객 전용'
+              }
+          </div>
         </div>
 
         <Routes>

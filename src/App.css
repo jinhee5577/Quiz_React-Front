@@ -11,7 +11,7 @@
 
 :root {
   --card-height: 30vh;
-  --card-width: calc(var(--card-height) / 1.2);
+  --card-width: calc(var(--card-height) / 1.3);
 }
 
 
@@ -78,8 +78,10 @@ body {
 }
 
 #quizBox{
+  padding: 0;
   width: 100%;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
 }
 
@@ -97,8 +99,6 @@ body {
   justify-content: center;
   align-items: center;
   text-align: center;
-  display: flex;
-  font-size: 1.5em;
   color: rgb(88 199 250 / 0%);
   cursor: pointer;
   font-family: cursive;
@@ -113,6 +113,21 @@ body {
   opacity: 0;
 }
 
+#quizBox li .card h3 {
+  font-size: 1.4em;
+  margin-top: 47%;
+}
+
+#quizBox li .card p .go{
+  width: 180px !important;
+  line-height: 45px !important;
+  font-size: 1.35em !important;
+  margin-top: 35px !important;
+  color: white !important;
+  font-size: 2.3rem !important;
+  text-decoration: none !important;
+  font-weight: bold;
+}
 
 #quizBox li .card::before {
   content: "뒤집어주세요.";

@@ -11,7 +11,7 @@ function Home() {
   // 대분류 퀴즈목록 가져 오는 비동기 함수 
   const getQuizs = async () => {
       const {data} = await axios.get('http://127.0.0.1:8000/quiz/');
-      console.log(data);
+     // console.log(data);
       setQuizList(data);
 
   };
@@ -41,8 +41,8 @@ function Home() {
                 return (
                     <li key={i}>
                       <div className="card">  
-                         <h3>{item.title}</h3>
-                         <p><Link to={`/questions/${item.id}`}>GO</Link></p>
+                         <h3 style={{width:'100%'}}>{item.title}</h3>
+                         <p><Link to={`/questions/${item.id}`} className='go'>GO</Link></p>
                       </div>
                     </li> 
                 );
