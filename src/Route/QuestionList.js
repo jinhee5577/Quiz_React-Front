@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useRef, } from 'react';
 import { useNavigate, } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import {ListGroup, Card} from 'react-bootstrap';
+import {ListGroup, Card, Button} from 'react-bootstrap';
 import '../App.css';
 import axios from 'axios';
 
@@ -181,7 +181,7 @@ function QuestionList() {
             </ListGroup>
         </ul>
 
-        <button onClick={saveUserAttempt}>답안 제출</button>
+        <Button variant="secondary" onClick={saveUserAttempt} style={{marginBottom:'65px'}}>답안 제출</Button>
 
       </div> 
   );
